@@ -1,5 +1,5 @@
 import Cors from 'cors';
-import { pool } from '../../lib/db.js';
+import { pool } from '../lib/db.js';
 
 // Inicializa middleware
 const cors = Cors({
