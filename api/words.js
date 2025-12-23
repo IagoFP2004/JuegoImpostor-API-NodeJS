@@ -1,10 +1,10 @@
 import Cors from 'cors';
 import { pool } from '../../lib/db.js';
 
-// Inicializa middleware CORS
+// Inicializa middleware
 const cors = Cors({
-  methods: ['GET', 'HEAD'],
-  origin: '*' // permite cualquier origen
+  origin: '*' , // permite cualquier origen (para desarrollo)
+  methods: ['GET', 'HEAD']
 });
 
 function runMiddleware(req, res, fn) {
@@ -17,7 +17,7 @@ function runMiddleware(req, res, fn) {
 }
 
 export default async function handler(req, res) {
-  await runMiddleware(req, res, cors);
+  await runMiddleware(req, res, cors); // ejecuta CORS
 
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
